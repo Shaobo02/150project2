@@ -131,7 +131,6 @@ int uthread_run(bool preempt, uthread_func_t func, void *arg)
 		// only orig context remains in the queue
 		if(queue_length(allReadyTcbs) == 0){
 			queue_iterate(zombie_queue, clear_zombie_queue);
-			printf("done\n");
 			if(preempt){
 				preempt_stop();
 			}
