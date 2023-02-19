@@ -16,8 +16,7 @@ struct queue {
     size_t size;
 };
 
-queue_t queue_create(void)
-{
+queue_t queue_create(void) {
 	/* TODO Phase 1 */
 	// allocate memory to new queue
 	queue_t new_queue = malloc(sizeof(queue_t));
@@ -30,8 +29,7 @@ queue_t queue_create(void)
 	return new_queue;
 }
 
-int queue_destroy(queue_t queue)
-{
+int queue_destroy(queue_t queue) {
 	/* TODO Phase 1 */
 	// queue don't exist or queue is not empty
 	if (queue == NULL || queue->head != NULL) {
@@ -43,8 +41,8 @@ int queue_destroy(queue_t queue)
 	return 0;
 }
 
-int queue_enqueue(queue_t queue, void *data)
-{	/* TODO Phase 1 */
+int queue_enqueue(queue_t queue, void *data) {	
+	/* TODO Phase 1 */
 
 	// check queue and data
 	if (queue == NULL || data == NULL)
@@ -75,11 +73,10 @@ int queue_enqueue(queue_t queue, void *data)
 	return 0;
 }
 
-int queue_dequeue(queue_t queue, void **data)
-{
+int queue_dequeue(queue_t queue, void **data) {
 	/* TODO Phase 1 */
 	// queue is empty or queue is NULL
-	if (queue -> head == NULL || queue == NULL)
+	if (queue == NULL || queue -> head == NULL)
 		return -1;
 
 
@@ -107,12 +104,13 @@ int queue_dequeue(queue_t queue, void **data)
 	return 0;
 }
 
-int queue_delete(queue_t queue, void *data)
-{
+int queue_delete(queue_t queue, void *data) {
 	/* TODO Phase 1 */
+	if (queue == NULL || data == NULL) {
+		return -1;
+	}
     // convert void ptr to a compareable ptr
     int* data_to_find = data;
-
     // get the head node
     node* current_node = queue -> head;
     // get the value in head node
@@ -152,8 +150,7 @@ int queue_delete(queue_t queue, void *data)
 	return -1;
 }
 
-int queue_iterate(queue_t queue, queue_func_t func)
-{
+int queue_iterate(queue_t queue, queue_func_t func) {
 	/* TODO Phase 1 */
 	if (queue == NULL || func == NULL) {
 		return -1;
@@ -171,8 +168,7 @@ int queue_iterate(queue_t queue, queue_func_t func)
 	return 0;
 }
 
-int queue_length(queue_t queue)
-{
+int queue_length(queue_t queue) {
 	/* TODO Phase 1 */
     if (queue == NULL) {
         return -1;
