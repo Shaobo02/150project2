@@ -109,7 +109,6 @@
 * The parameter represents the head of a semaphore queue
 * This thread is set to ready state and queued to the ready-to-run queue
 ## Preemption
-  aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 1. Signal handeler
 * This is basically a timer that sets a system timer
 * The system timer will raise a signal when the time has reached
