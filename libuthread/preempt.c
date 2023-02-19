@@ -17,7 +17,8 @@
 #define HZ 100
 struct itimerval timer;
 sigset_t ss;
-void sig_handler(){
+
+void sig_handler() {
 	uthread_yield();
 	
 	timer.it_interval.tv_sec = 0;
@@ -26,24 +27,21 @@ void sig_handler(){
 	// set the timer again
 	setitimer(ITIMER_VIRTUAL,&timer,NULL);
 }
-void preempt_disable(void)
-{
+void preempt_disable(void) {
 	/* TODO Phase 4 */
 	sigemptyset(&ss);
 	sigaddset(&ss, SIGVTALRM);
 	sigprocmask(SIG_BLOCK, &ss, NULL);
 }
 
-void preempt_enable(void)
-{
+void preempt_enable(void) {
 	/* TODO Phase 4 */
 	sigemptyset(&ss);
 	sigaddset(&ss, SIGVTALRM);
 	sigprocmask(SIG_UNBLOCK, &ss, NULL);
 }
 
-void preempt_start(bool preempt)
-{
+void preempt_start(bool preempt) {
 	/* TODO Phase 4 */
 	if(preempt){
 		struct sigaction sa;
@@ -60,8 +58,7 @@ void preempt_start(bool preempt)
 	}
 }
 
-void preempt_stop(void)
-{
+void preempt_stop(void) {
 	/* TODO Phase 4 */
 	// no more signal handeling
 	sigaction(SIGVTALRM,NULL,NULL);
